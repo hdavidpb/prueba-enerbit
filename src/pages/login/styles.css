@@ -1,0 +1,80 @@
+.login-view {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-layout-container {
+  width: 646px;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  box-shadow: inset 0 -3em 3em #fdc69320, 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    140deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    #f16f02 75%
+  );
+}
+
+.logo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+.logo-container h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.form-box-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.form-container {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.form-container form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 400px) {
+  .login-layout-container {
+    width: 100%;
+    height: 100vh;
+    grid-template-columns: repeat(1, 1fr);
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .form-container {
+    height: auto;
+    gap: 1rem;
+  }
+}

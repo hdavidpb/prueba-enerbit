@@ -137,6 +137,10 @@
 .pagination-container button:disabled {
   background-color: gray !important;
 }
+
+.pagination-container p {
+  font-size: 14px;
+}
 .form-field {
   width: 100%;
   display: flex;

@@ -8,12 +8,15 @@ interface Props {
   nextPage: number | null;
   previousPage: number | null;
   size?: number;
+  page: number;
+  pages: number;
 }
 
-const Pagination = ({ nextPage, previousPage, size }: Props) => {
+const Pagination = ({ nextPage, previousPage, size, page, pages }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className="pagination-container">
+      <p className="page-info">{`Página ${page + 1} de ${pages}`}</p>
       <button
         disabled={previousPage === null}
         onClick={() => dispatch(getAllProducts({ page: previousPage!, size }))}

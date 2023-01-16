@@ -12,7 +12,7 @@ import FormProducts from "./FormProducts";
 const AdminPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { products } = useSelector((store: RootState) => store.products);
-  const { next_page, previous_page } = products;
+  const { next_page, previous_page, page, pages } = products;
   useEffect(() => {
     dispatch(getAllProducts({}));
   }, []);
@@ -21,7 +21,12 @@ const AdminPage = () => {
     <div className="container-page">
       <Header />
       <Table />
-      <Pagination nextPage={next_page} previousPage={previous_page} />
+      <Pagination
+        nextPage={next_page}
+        previousPage={previous_page}
+        page={page}
+        pages={pages}
+      />
       <Modal>
         <FormProducts />
       </Modal>

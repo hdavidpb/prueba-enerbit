@@ -77,6 +77,7 @@ const productSlice = createSlice({
         }
       });
       state.products.items = newItems;
+      state.selectedProduct = initialState.selectedProduct;
     });
     addCase(deleteProduct.pending, (state) => {
       state.loadingProducts = true;

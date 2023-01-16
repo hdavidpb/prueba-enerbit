@@ -5,11 +5,26 @@ import useProductForm from "../../hooks/useProductForm";
 import { inputType } from "../../interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import useDeleteProduct from "../../hooks/useDeleteProduct";
 
 const FormProducts = () => {
-  const { selectedProduct } = useSelector((store: RootState) => store.products);
-  const { handleChangeValue, handleChangeSelectValue, productForm } =
-    useProductForm();
+  const { selectedProduct, products } = useSelector(
+    (store: RootState) => store.products
+  );
+  const { page } = products;
+  const {
+    handleCreateProduct,
+    handleChangeValue,
+    handleChangeSelectValue,
+    handleUpdateProduct,
+    productForm,
+    errors,
+  } = useProductForm();
+  const { handleDeleteProduct } = useDeleteProduct();
+  const handleUpdateSeletedProduct = () => {
+    handleUpdateProduct(selectedProduct!.id);
+  };
+
   return (
     <div className="product-form-container">
       <div className="form-field">
@@ -19,6 +34,7 @@ const FormProducts = () => {
           onChange={handleChangeValue}
           placeholder="serial"
           value={productForm.serial}
+          error={errors.serial}
         />
       </div>
       <div className="form-field">
@@ -42,6 +58,7 @@ const FormProducts = () => {
           placeholder="Ib"
           value={productForm.i_b}
           type={inputType.number}
+          error={errors.i_b}
         />
       </div>
       <div className="form-field">
@@ -52,6 +69,7 @@ const FormProducts = () => {
           placeholder="IMax"
           value={productForm.i_max}
           type={inputType.number}
+          error={errors.i_max}
         />
       </div>
       <div className="form-field">
@@ -62,6 +80,7 @@ const FormProducts = () => {
           placeholder="In"
           value={productForm.i_n}
           type={inputType.number}
+          error={errors.i_n}
         />
       </div>
       <div className="form-field">
@@ -71,6 +90,7 @@ const FormProducts = () => {
           onChange={handleChangeValue}
           placeholder="Location"
           value={productForm.location}
+          error={errors.location}
         />
       </div>
       <div className="form-field">
@@ -80,6 +100,7 @@ const FormProducts = () => {
           onChange={handleChangeValue}
           placeholder="Manufacturer"
           value={productForm.manufacturer}
+          error={errors.manufacturer}
         />
       </div>
       <div className="form-field">
@@ -102,6 +123,7 @@ const FormProducts = () => {
           onChange={handleChangeValue}
           placeholder="Purchase"
           value={productForm.purchase}
+          error={errors.purchase}
         />
       </div>
       <div className="form-field">
@@ -112,6 +134,7 @@ const FormProducts = () => {
           placeholder="Seals"
           value={productForm.seals}
           type={inputType.number}
+          error={errors.seals}
         />
       </div>
       <div className="form-field">
@@ -141,12 +164,28 @@ const FormProducts = () => {
 
       <div className="product-options">
         {selectedProduct && (
-          <Button Icon={CiEdit} text="Edit" bgColor="#f16f02" />
+          <Button
+            Icon={CiEdit}
+            text="Edit"
+            bgColor="#f16f02"
+            onClick={handleUpdateSeletedProduct}
+          />
         )}
         {!selectedProduct && (
-          <Button Icon={CiEdit} text="Save" bgColor="rgb(28, 158, 98)" />
+          <Button
+            Icon={CiEdit}
+            text="Save"
+            bgColor="rgb(28, 158, 98)"
+            onClick={() => handleCreateProduct(page)}
+          />
         )}
-        <Button text="Delete" bgColor="red" />
+        {selectedProduct && (
+          <Button
+            text="Delete"
+            bgColor="red"
+            onClick={() => handleDeleteProduct(selectedProduct)}
+          />
+        )}
       </div>
     </div>
   );

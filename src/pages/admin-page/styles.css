@@ -123,14 +123,20 @@
 
 .pagination-container span {
   font-size: 1rem;
-  color: #523787;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
 }
 .pagination-container span:hover {
   font-size: 16.5px;
 }
+.pagination-container button {
+  background-color: #543d81de;
+  color: #ffffff;
+}
 
+.pagination-container button:disabled {
+  background-color: gray !important;
+}
 .form-field {
   width: 100%;
   display: flex;

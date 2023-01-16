@@ -1,10 +1,31 @@
 import "../styles.css";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/store";
+import { getAllProducts } from "../../../redux/features/products/services";
+import { Button } from "../../../components";
 
-const Pagination = () => {
+interface Props {
+  nextPage: number | null;
+  previousPage: number | null;
+  size?: number;
+}
+
+const Pagination = ({ nextPage, previousPage, size }: Props) => {
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <div className="pagination-container">
-      <span> {"< Previous"}</span>
-      <span>{"Next >"}</span>
+      <button
+        disabled={previousPage === null}
+        onClick={() => dispatch(getAllProducts({ page: previousPage!, size }))}
+      >
+        <span> {"< Previous"}</span>
+      </button>
+      <button
+        disabled={nextPage === null}
+        onClick={() => dispatch(getAllProducts({ page: nextPage!, size }))}
+      >
+        <span>{"Next >"}</span>
+      </button>
     </div>
   );
 };

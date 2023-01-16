@@ -7,7 +7,7 @@ interface Props {
   bgColor?: string;
   colorText?: string;
   type?: buttonType;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   disabled?: boolean;
 }
 

@@ -23,11 +23,11 @@ export interface Item {
   location: string;
   manufacturer: string;
   purchase: string;
-  i_max: number | string;
-  i_b: number | string;
-  i_n: number | string;
-  seals: number | string;
-  id: number | string;
+  i_max: number;
+  i_b: number;
+  i_n: number;
+  seals: number;
+  id: number;
   created_at: string;
   updated_at: string | null;
 }
@@ -41,10 +41,10 @@ export interface ItemForm {
   location: string;
   manufacturer: string;
   purchase: string;
-  i_max: number | string;
-  i_b: number | string;
-  i_n: number | string;
-  seals: number | string;
+  i_max: number;
+  i_b: number;
+  i_n: number;
+  seals: number;
 }
 
 export interface IGetProductsParams {

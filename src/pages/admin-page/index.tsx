@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../redux/features/products/services";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import Header from "./Header";
 import Table from "./table/Table";
 import Pagination from "./table/Pagination";
@@ -11,7 +11,8 @@ import "./styles.css";
 import FormProducts from "./FormProducts";
 const AdminPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const { products } = useSelector((store: RootState) => store.products);
+  const { next_page, previous_page } = products;
   useEffect(() => {
     dispatch(getAllProducts({}));
   }, []);
@@ -20,7 +21,7 @@ const AdminPage = () => {
     <div className="container-page">
       <Header />
       <Table />
-      <Pagination />
+      <Pagination nextPage={next_page} previousPage={previous_page} />
       <Modal>
         <FormProducts />
       </Modal>

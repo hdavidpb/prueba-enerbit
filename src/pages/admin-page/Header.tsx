@@ -22,7 +22,7 @@ const Header = () => {
         bgColor="#1c9e62"
         text="Add product"
         Icon={HiSparkles}
-        onClick={() => dispatch(handleChangeShowModal())}
+        onClick={() => dispatch(handleChangeShowModal({}))}
       />
     </div>
   );

@@ -8,6 +8,7 @@ interface Props {
   type?: inputType;
   name: string;
   value: string | number;
+  error?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Input = ({
@@ -17,6 +18,7 @@ export const Input = ({
   onChange,
   name,
   value,
+  error,
 }: Props) => {
   return (
     <div className="input-field-container">
@@ -28,6 +30,7 @@ export const Input = ({
         placeholder={placeholder}
         onChange={onChange}
       />
+      {error && <span>*Requerido</span>}
     </div>
   );
 };

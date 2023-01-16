@@ -14,7 +14,7 @@ const Modal = ({ children }: Props) => {
   const dispatch = useDispatch();
 
   const handleClose = () => {
-    dispatch(handleChangeShowModal());
+    dispatch(handleChangeShowModal({}));
     dispatch(clearSelectedProduct());
   };
 

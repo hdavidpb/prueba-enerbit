@@ -26,7 +26,7 @@ export const Button = ({
       type={type ?? "button"}
       onClick={onClick}
       style={{
-        backgroundColor: bgColor ? bgColor : "aqua",
+        backgroundColor: bgColor ? bgColor : "#3f51b5",
         color: colorText ? colorText : "#FFFFFF",
       }}
     >

@@ -11,7 +11,7 @@ const Layout = ({ logo, title, children }: Props) => {
       <div className="logo-container">
         <img
           src={logo ?? "https://enerbit.co/img/mainLogo.bea5a270.svg"}
-          alt="logo"
+          alt="Enerbit logo"
         />
         <h1>{title ?? "Module"}</h1>
       </div>

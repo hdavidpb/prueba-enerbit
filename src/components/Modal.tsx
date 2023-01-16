@@ -2,6 +2,7 @@ import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { handleChangeShowModal } from "../redux/features/common/commonSlice";
+import { clearSelectedProduct } from "../redux/features/products/productsSlice";
 
 interface Props {
   children: JSX.Element;
@@ -9,16 +10,27 @@ interface Props {
 
 const Modal = ({ children }: Props) => {
   const { showModal } = useSelector((store: RootState) => store.common);
+  const { selectedProduct } = useSelector((store: RootState) => store.products);
   const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(handleChangeShowModal());
+    dispatch(clearSelectedProduct());
+  };
+
   return (
     <div
-      //   onClick={() => dispatch(handleChangeShowModal())}
+      onClick={handleClose}
       className={showModal ? "modal-container opened-modal" : "modal-container"}
     >
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h3>Product</h3>
-          <span>X</span>
+          <h3>
+            {selectedProduct
+              ? `# ${selectedProduct.serial}`
+              : "Add a new product"}
+          </h3>
+          <span onClick={handleClose}>X</span>
         </div>
         <div className="modal-body">{children}</div>
       </div>

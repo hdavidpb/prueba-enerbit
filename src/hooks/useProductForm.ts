@@ -1,28 +1,41 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import {
   conditionType,
   connectionType,
   ownerType,
-  ProductForm,
   storageSystemType,
 } from "../interfaces";
+import { Item, ItemForm } from "../redux/features/products/interface";
+
+const initialState = {
+  condition: conditionType.nuevo,
+  connection_type: connectionType.directa,
+  i_b: "",
+  i_max: "",
+  i_n: "",
+  location: "",
+  manufacturer: "",
+  owner: ownerType.or,
+  purchase: "",
+  seals: "",
+  serial: "",
+  storage_system: storageSystemType.externo,
+};
 
 const useProductForm = () => {
-  const [productForm, setProductForm] = useState({
-    condition: conditionType.nuevo,
-    connection_type: connectionType.directa,
-    i_b: "",
-    i_max: "",
-    i_n: "",
-    location: "",
-    manufacturer: "",
-    owner: ownerType.fr,
-    purchase: "",
-    seals: "",
-    serial: "",
-    storage_system: storageSystemType.externo,
-  });
+  const { selectedProduct } = useSelector((store: RootState) => store.products);
+  const [productForm, setProductForm] = useState<ItemForm>(initialState);
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setProductForm(selectedProduct);
+    } else {
+      setProductForm(initialState);
+    }
+  }, [selectedProduct]);
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
@@ -33,7 +46,11 @@ const useProductForm = () => {
     setProductForm({ ...productForm, [e.target.name]: e.target.value });
   };
 
-  return { productForm, handleChangeValue, handleChangeSelectValue };
+  return {
+    productForm,
+    handleChangeValue,
+    handleChangeSelectValue,
+  };
 };
 
 export default useProductForm;

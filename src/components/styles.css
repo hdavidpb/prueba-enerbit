@@ -117,6 +117,9 @@ select {
   align-items: center;
   padding-bottom: 3rem;
 }
+.modal-header span {
+  cursor: pointer;
+}
 .modal-body {
   width: 100%;
 }

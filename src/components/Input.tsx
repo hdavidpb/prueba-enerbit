@@ -7,7 +7,7 @@ interface Props {
   placeholder: string;
   type?: inputType;
   name: string;
-  value: string;
+  value: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Input = ({

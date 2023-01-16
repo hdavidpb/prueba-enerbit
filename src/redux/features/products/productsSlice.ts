@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { IInitialState } from "./interface";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IInitialState, Item } from "./interface";
 import { getAllProducts } from "./services";
 
 const initialState: IInitialState = {
@@ -18,7 +18,14 @@ const initialState: IInitialState = {
 const productSlice = createSlice({
   name: "products-slice",
   initialState,
-  reducers: {},
+  reducers: {
+    selectProduct: (state, action: PayloadAction<Item>) => {
+      state.selectedProduct = action.payload;
+    },
+    clearSelectedProduct: (state) => {
+      state.selectedProduct = initialState.selectedProduct;
+    },
+  },
   extraReducers: ({ addCase }) => {
     addCase(getAllProducts.pending, (state) => {
       state.loadingProducts = true;
@@ -30,4 +37,5 @@ const productSlice = createSlice({
   },
 });
 
+export const { selectProduct, clearSelectedProduct } = productSlice.actions;
 export default productSlice.reducer;

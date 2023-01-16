@@ -12,6 +12,7 @@ export const getAllProducts = createAsyncThunk(
 
     try {
       const response = await rest.get<ProductResponse>(PARAMS);
+
       return response.data;
     } catch (error) {
       errorAlert(JSON.stringify(error));

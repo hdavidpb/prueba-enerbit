@@ -11,7 +11,7 @@ interface Props {
 export const Select = ({ options, onChange, name, value }: Props) => {
   return (
     <div className="input-field-container">
-      <select onChange={onChange} name={name}>
+      <select onChange={onChange} name={name} value={value}>
         {options.map(({ value, label }) => (
           <option key={value} value={value}>
             {label}

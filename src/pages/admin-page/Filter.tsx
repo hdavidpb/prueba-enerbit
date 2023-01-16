@@ -16,7 +16,7 @@ const Filter = () => {
       />
       <button onClick={handleClearFilter} className="tooltip">
         <VscClearAll size={15} color="gray" />
-        <span className="tooltiptext">Reestablecer valores</span>
+        <span className="tooltiptext">Reload</span>
       </button>
     </div>
   );

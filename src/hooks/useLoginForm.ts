@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { errorAlert, succesAlert } from "../utils/utils";
+import { errorAlert } from "../utils/utils";
 
 const useLoginForm = () => {
   const [formValues, setFormValues] = useState({

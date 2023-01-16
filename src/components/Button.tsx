@@ -31,7 +31,7 @@ export const Button = ({
       }}
     >
       {Icon && <Icon size={18} color={colorText ? colorText : "#FFFFFF"} />}
-      <p>{text}</p>
+      {text && <p>{text}</p>}
     </button>
   );
 };

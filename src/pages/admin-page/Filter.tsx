@@ -14,8 +14,9 @@ const Filter = () => {
         onChange={onQueryChanged}
         value={serial}
       />
-      <button onClick={handleClearFilter}>
+      <button onClick={handleClearFilter} className="tooltip">
         <VscClearAll size={15} color="gray" />
+        <span className="tooltiptext">Reestablecer valores</span>
       </button>
     </div>
   );

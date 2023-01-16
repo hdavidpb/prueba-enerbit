@@ -1,13 +1,18 @@
 import { HiSparkles } from "react-icons/hi";
-import { VscClearAll } from "react-icons/vsc";
+import { IoMdExit } from "react-icons/io";
 import { Button, Input } from "../../components";
-import Filter from "./Filter";
-import "./styles.css";
 import { useDispatch } from "react-redux";
 import { handleChangeShowModal } from "../../redux/features/common/commonSlice";
+import Filter from "./Filter";
+import "./styles.css";
 
 const Header = () => {
   const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <div className="header-container">
@@ -18,12 +23,20 @@ const Header = () => {
         />
         <Filter />
       </div>
-      <Button
-        bgColor="#1c9e62"
-        text="Add product"
-        Icon={HiSparkles}
-        onClick={() => dispatch(handleChangeShowModal({}))}
-      />
+      <div className="header-actions-container">
+        <Button
+          bgColor="#1c9e62"
+          text="Add product"
+          Icon={HiSparkles}
+          onClick={() => dispatch(handleChangeShowModal({}))}
+        />
+        <Button
+          bgColor="#e61b1b"
+          text=""
+          Icon={IoMdExit}
+          onClick={handleLogOut}
+        />
+      </div>
     </div>
   );
 };

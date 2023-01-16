@@ -16,18 +16,18 @@ const Pagination = ({ nextPage, previousPage, size, page, pages }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className="pagination-container">
-      <p className="page-info">{`Página ${page + 1} de ${pages}`}</p>
+      <p className="page-info">{`Page ${page + 1} of ${pages}`}</p>
       <button
         disabled={previousPage === null}
         onClick={() => dispatch(getAllProducts({ page: previousPage!, size }))}
       >
-        <span> {"< Previous"}</span>
+        <span> {"<"}</span>
       </button>
       <button
         disabled={nextPage === null}
         onClick={() => dispatch(getAllProducts({ page: nextPage!, size }))}
       >
-        <span>{"Next >"}</span>
+        <span>{">"}</span>
       </button>
     </div>
   );
